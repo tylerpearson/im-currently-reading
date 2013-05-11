@@ -85,10 +85,14 @@ GEM
     amazon-ecs (2.2.4)
       nokogiri (~> 1.4)
       ruby-hmac (~> 0.3)
+    better_errors (0.8.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
     bourbon (3.1.4)
       sass (>= 3.2.0)
       thor
     builder (3.0.4)
+    coderay (1.0.9)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -98,6 +102,9 @@ GEM
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    figaro (0.6.3)
+      bundler (~> 1.0)
+      rails (>= 3, < 5)
     hike (1.2.2)
     i18n (0.6.4)
     jquery-rails (2.2.1)
@@ -111,7 +118,10 @@ GEM
     mime-types (1.23)
     multi_json (1.7.3)
     nokogiri (1.5.9)
+    pg (0.15.1)
     polyglot (0.3.3)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -152,10 +162,14 @@ PLATFORMS
 DEPENDENCIES
   amazon-ecs
   arel!
+  better_errors
   bourbon
   coffee-rails!
+  figaro
   journey!
   jquery-rails
+  pg
+  quiet_assets
   rails!
   sass-rails!
   sqlite3
