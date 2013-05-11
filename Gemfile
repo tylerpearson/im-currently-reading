@@ -21,6 +21,18 @@ end
 
 gem 'jquery-rails'
 
+# Use Bourbon for SASS
+gem 'bourbon'
+
+# Use Turbolinks
+gem 'turbolinks'
+
+# Use Thin server
+gem 'thin'
+
+# Amazon Product API
+gem 'amazon-ecs'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
