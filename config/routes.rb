@@ -1,4 +1,12 @@
 ImCurrentlyReading::Application.routes.draw do
+
+  get "api/books"
+
+  root :to => 'books#new'
+
+  resources :books
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

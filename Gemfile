@@ -31,6 +31,8 @@ gem 'thin'
 # Amazon Product API
 gem 'amazon-ecs'
 
+# Environment variables
+# https://github.com/laserlemon/figaro
 gem 'figaro'
 
 # development
