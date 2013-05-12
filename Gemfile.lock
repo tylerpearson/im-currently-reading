@@ -85,14 +85,10 @@ GEM
     amazon-ecs (2.2.4)
       nokogiri (~> 1.4)
       ruby-hmac (~> 0.3)
-    better_errors (0.8.0)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
     bourbon (3.1.4)
       sass (>= 3.2.0)
       thor
     builder (3.0.4)
-    coderay (1.0.9)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -164,7 +160,6 @@ PLATFORMS
 DEPENDENCIES
   amazon-ecs
   arel!
-  better_errors
   bourbon
   coffee-rails!
   figaro

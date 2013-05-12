@@ -1,18 +1,18 @@
 require 'json'
 
 class Book < ActiveRecord::Base
-  attr_accessible :amazon_asin, :description, :image_url, :title
+  attr_accessible :amazon_asin, :description, :image_url, :title, :amazon_url
 
   validates :title, :presence => true
 
-  #before_create :get_amazon_info
+  validates :amazon_asin, :uniqueness => true, :presence => true
 
-  has_many :messages
+  has_one :message
+
+  before_validation :add_amazon_info
 
 
-  private
-
-  def get_amazon_info
+  def add_amazon_info
 
     Amazon::Ecs.options = {
       :associate_tag     => ENV["AWS_ASSOCIATE_TAG"],
@@ -20,11 +20,11 @@ class Book < ActiveRecord::Base
       :AWS_secret_key    => ENV["AWS_SECRET_KEY"]
     }
 
-    res = Amazon::Ecs.item_search(self.title, {:response_group => 'Medium', :sort => 'relevancerank'})
+    res = Amazon::Ecs.item_lookup(self.amazon_asin, {:response_group => 'Medium', :sort => 'relevancerank'})
 
     if res.is_valid_request?
       puts "It's a valid request"
-      puts to_hash(res.items).to_json
+      @info = to_hash(res.items)[0]
     end
 
     if res.has_error?
@@ -32,12 +32,20 @@ class Book < ActiveRecord::Base
       puts res.error
     end
 
+    self.title       = @info["ItemAttributes"]["Title"]
+    self.amazon_url  = @info["DetailPageURL"]
+    self.image_url   = @info["LargeImage"]["URL"]
+    self.description = @info["EditorialReviews"]["EditorialReview"]
+
+    if self.author_name = @info["ItemAttributes"]["Author"].kind_of?(Array)
+      self.author_name = @info["ItemAttributes"]["Author"].join(", ")
+    else
+      self.author_name = @info["ItemAttributes"]["Author"]
+    end
+
   end
 
 
-  #
-  # Converts given array to a Hash
-  #
   def to_hash(array)
     array.map do |item|
       Hash.from_xml("<root>#{item.elem.inner_html}</root>")['root']

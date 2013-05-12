@@ -40,7 +40,9 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(params[:message])
+    @book    = Book.where(amazon_asin: params[:amazon_asin]).first_or_create
+    @message = Message.new(message: params[:message][:message], book_id: @book.id )
+
 
     respond_to do |format|
       if @message.save
@@ -80,4 +82,8 @@ class MessagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
+
 end

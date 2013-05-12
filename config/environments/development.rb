@@ -34,4 +34,10 @@ ImCurrentlyReading::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+
+  if "irb" == $0
+    ActiveRecord::Base.logger = Logger.new(STDOUT)
+    ActiveSupport::Cache::Store.logger = Logger.new(STDOUT)
+  end
 end

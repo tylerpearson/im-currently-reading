@@ -6,7 +6,6 @@ ImCurrentlyReading::Application.routes.draw do
 
   get "api/books"
   resources :messages
-  resources :books
 
 
   # The priority is based upon order of creation:

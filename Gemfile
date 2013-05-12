@@ -37,7 +37,6 @@ gem 'figaro'
 
 # development
 group :development do
-  gem "better_errors"
   gem 'sqlite3'
   gem 'quiet_assets'
 end
