@@ -1,11 +1,13 @@
 require 'json'
 
 class Book < ActiveRecord::Base
-  attr_accessible :amazon_asin, :description, :image_url, :title, :comment
+  attr_accessible :amazon_asin, :description, :image_url, :title
 
   validates :title, :presence => true
 
   #before_create :get_amazon_info
+
+  has_many :messages
 
 
   private

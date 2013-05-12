@@ -1,9 +1,11 @@
 ImCurrentlyReading::Application.routes.draw do
 
+
+
+  root :to => 'messages#new'
+
   get "api/books"
-
-  root :to => 'books#new'
-
+  resources :messages
   resources :books
 
 
