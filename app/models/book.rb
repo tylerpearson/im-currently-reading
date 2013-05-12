@@ -5,7 +5,7 @@ class Book < ActiveRecord::Base
 
   validates :title, :presence => true
 
-  before_create :get_amazon_info, :puts_info
+  #before_create :get_amazon_info
 
 
   private
@@ -18,13 +18,11 @@ class Book < ActiveRecord::Base
       :AWS_secret_key    => ENV["AWS_SECRET_KEY"]
     }
 
-    res = Amazon::Ecs.item_search(self.title, {:response_group => 'Small', :sort => 'relevancerank'})
+    res = Amazon::Ecs.item_search(self.title, {:response_group => 'Medium', :sort => 'relevancerank'})
 
     if res.is_valid_request?
       puts "It's a valid request"
-      puts Hash.from_xml(res.items)
-      puts res.items.to_json
-      puts res.to_json
+      puts to_hash(res.items).to_json
     end
 
     if res.has_error?
@@ -32,11 +30,16 @@ class Book < ActiveRecord::Base
       puts res.error
     end
 
-
   end
 
-  def puts_info
-    puts "Title: " + self.title
+
+  #
+  # Converts given array to a Hash
+  #
+  def to_hash(array)
+    array.map do |item|
+      Hash.from_xml("<root>#{item.elem.inner_html}</root>")['root']
+    end
   end
 
 end
