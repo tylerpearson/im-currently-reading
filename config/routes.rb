@@ -2,10 +2,15 @@ ImCurrentlyReading::Application.routes.draw do
 
 
 
-  root :to => 'messages#new'
+  root :to => 'messages#new', as: :new_message
 
   get "api/books"
-  resources :messages
+
+  resources :messages, :except => [:show, :new]
+
+  match '/:id' => 'messages#show', as: :message
+
+
 
 
   # The priority is based upon order of creation:
