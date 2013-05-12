@@ -1,7 +1,7 @@
 require 'json'
 
 class Book < ActiveRecord::Base
-  attr_accessible :amazon_asin, :description, :image_url, :title, :amazon_url
+  attr_accessible :amazon_asin, :description, :image_url, :title, :amazon_url, :medium_image_url
 
   validates :title, :presence => true
 
@@ -32,20 +32,18 @@ class Book < ActiveRecord::Base
       puts res.error
     end
 
-    self.title       = @info["ItemAttributes"]["Title"]
-    self.amazon_url  = @info["DetailPageURL"]
-    self.image_url   = @info["LargeImage"]["URL"]
-    self.description = @info["EditorialReviews"]["EditorialReview"]
+    self.title            = @info["ItemAttributes"]["Title"]
+    self.amazon_url       = @info["DetailPageURL"]
+    self.image_url        = @info["LargeImage"]["URL"]
+    self.medium_image_url = @info["MediumImage"]["URL"]
+    self.description      = @info["EditorialReviews"]["EditorialReview"]["Content"]
 
-    if self.author_name = @info["ItemAttributes"]["Author"].kind_of?(Array)
-      self.author_name = @info["ItemAttributes"]["Author"].join(", ")
-    else
-      self.author_name = @info["ItemAttributes"]["Author"]
-    end
+    author                = @info["ItemAttributes"]["Author"]
+    author.kind_of?(Array) ? (self.author_name = author.join(", ")) : (self.author_name = author)
 
   end
 
-
+  # convert array to hash
   def to_hash(array)
     array.map do |item|
       Hash.from_xml("<root>#{item.elem.inner_html}</root>")['root']
