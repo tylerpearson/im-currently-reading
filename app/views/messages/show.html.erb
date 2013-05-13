@@ -1,15 +1,28 @@
-<p id="notice"><%= notice %></p>
+<section class="card center-page">
+    <div class="card-wrap">
+        <div class="book-wrap">
+            <div class="book" style="background-image: url('<%= @book.medium_image_url %>');"></div><!--end .book-wrap -->
+        </div><!--end .book-wrap -->
+        <div class="book-header-container">
+            <header class="book-header">
+                <h1 class="book-title <%= "long-book-title" unless @book.title.length < 70 %>"><%= truncate(@book.title, :length => 90, :separator => ' ', :omission => '...') %></h1>
+                <h2 class="book-author"><%= "by #{@book.author_name}" unless @book.author_name.nil? %></h2>
+            </header><!--end .book-header -->
+        </div><!--end .book-header-container -->
+        <div class="share-bar">
+            <ul class="share-links">
+                <li class="share-links-item twitter-share"><a href="#"><i class="icon-twitter"></i> Share</a></li>
+                <li class="share-links-item facebook-share"><a href="#"><i class="icon-facebook"></i> Share</a></li>
+                <li class="share-links-item amazon-share"><%= link_to "<i class=\"icon-amazon\"></i> View".html_safe, @book.amazon_url %></li>
+            </ul>
+        </div><!--end .share-bar -->
+    </div>
+    <div class="card-wrap-hidden">
+        <%= image_tag(@book.image_url, :class => "card-bg") %>
+    </div><!--end .card-wrap -->
+</section><!--end .card -->
 
-<p>
-  <b>Message:</b>
-  <%= @message.message %>
-</p>
-
-<p>
-  <b>Book:</b>
-  <%= @message.book_id %>
-</p>
 
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+
+

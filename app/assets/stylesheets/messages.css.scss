@@ -1,3 +1,182 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.center-page {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -100px;
+    -webkit-animation: welcome-in 1s ease-out;
+    -moz-animation: welcome-in 1s ease-out;
+    -ms-animation: welcome-in 1s ease-out;
+    animation: welcome-in 1s ease-out;
+}
+
+
+.card {
+    width: 500px;
+    height: 200px;
+    background: url('ajax-loader.gif') center center no-repeat #fff;
+    box-shadow: 0 0 9px rgba(0,0,0,0.2), 0 0 200px rgba(255,255,255,1), 0 1px 0 #a9a9a9, 0 2px 1px #a9a9a9;
+    border-radius: 4px;
+}
+
+    .card-wrap {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+    }
+
+    .card-wrap-hidden {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        margin-left: -250px;
+        margin-top: -80px;
+        overflow: hidden;
+        z-index: 1;
+        border-radius: 4px;
+    }
+
+    .card-bg {
+        filter: blur(10px) brightness(105%);
+        -webkit-filter: blur(10px) brightness(105%);
+        width: 105%;
+        top: -50%;
+        @include position(absolute, -60% 0 0 -2.5%);
+        z-index: 1;
+    }
+
+    .book-wrap {
+        padding: 5px;
+        background: url('ajax-loader.gif') center center no-repeat #fff;
+        border-radius: 4px;
+        @include position(absolute, -10px 0 0 10px);
+        height: 220px;
+        width: 140px;
+        box-shadow: 0 0 5px rgba(0,0,0,.2), 0 2px 1px #a9a9a9;
+        z-index: 7;
+    }
+
+        .book {
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            @include prefixer(background-size, cover, webkit moz o spec);
+            background-position: top center;
+            box-shadow: 0 0 5px rgba(0,0,0,.1), 0 1px 1px #ccc;
+        }
+
+
+    .book-header-container {
+        height: 120px;
+        display: table;
+        @include position(absolute, 20px 20px 0 0);
+    }
+
+
+        .book-header {
+            color: #fff;
+            text-shadow: 0 1px 3px rgba(0,0,0,.5);
+
+            width: 310px;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+            .book-title {
+                font-size: 24px;
+                line-height: 1.2;
+                &.long-book-title {
+                    font-size: 20px;
+                }
+            }
+
+            .book-author {
+                font-size: 16px;
+                margin-top: 10px;
+            }
+
+
+    .share-bar {
+        background: #fff;
+        width: 100%;
+        height: 40px;
+        padding: 5px;
+        z-index: 6;
+        @include position(absolute, 0 0px 0px 0);
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+        box-shadow: 0 0 5px rgba(0,0,0,.2), inset 0 -6px 6px rgba(100,100,100,0.03);
+    }
+
+      .share-links {
+          margin-left: 160px;
+          li {
+              display: inline-block;
+              a {
+
+              }
+          }
+      }
+
+          .share-links-item {
+              width: 100px;
+              text-align: center;
+              font-size: 13px;
+              line-height: 30px;
+              font-weight: bold;
+              a {
+                  i {
+                      font-size: 17px;
+                      position: relative;
+                      top: 2px;
+                      margin-right: 1px;
+                  }
+                  text-decoration: none;
+                  &:active {
+                      position: relative;
+                      top: 1px;
+                  }
+              }
+          }
+
+              $twitter-color:  #00aced;
+              $facebook-color: #3b5998;
+              $amazon-color:   #ffa929;
+
+              .twitter-share {
+                  a {
+                      color: $twitter-color;
+                      &:hover {
+                          color: darken($twitter-color,5%);
+                      }
+                  }
+              }
+
+              .facebook-share {
+                  a {
+                      color: $facebook-color;
+                      &:hover {
+                          color: darken($facebook-color,5%);
+                      }
+                  }
+              }
+
+              .amazon-share {
+                  a {
+                      color: $amazon-color;
+                      &:hover {
+                          color: darken($amazon-color,5%);
+                      }
+                  }
+              }

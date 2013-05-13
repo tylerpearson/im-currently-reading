@@ -25,6 +25,7 @@ class Book < ActiveRecord::Base
     if res.is_valid_request?
       puts "It's a valid request"
       @info = to_hash(res.items)[0]
+      puts @info.to_json
     end
 
     if res.has_error?
@@ -36,10 +37,19 @@ class Book < ActiveRecord::Base
     self.amazon_url       = @info["DetailPageURL"]
     self.image_url        = @info["LargeImage"]["URL"]
     self.medium_image_url = @info["MediumImage"]["URL"]
-    self.description      = @info["EditorialReviews"]["EditorialReview"]["Content"]
 
-    author                = @info["ItemAttributes"]["Author"]
-    author.kind_of?(Array) ? (self.author_name = author.join(", ")) : (self.author_name = author)
+    if @info["EditorialReviews"]["EditorialReview"].kind_of?(Array)
+      self.description = @info["EditorialReviews"]["EditorialReview"][0]["Content"]
+    else
+      self.description = @info["EditorialReviews"]["EditorialReview"]["Content"]
+    end
+
+    if @info["ItemAttributes"]["Author"].kind_of?(Array)
+      self.author_name = @info["ItemAttributes"]["Author"].join(", ")
+    else
+      self.author_name = @info["ItemAttributes"]["Author"]
+    end
+
 
   end
 
