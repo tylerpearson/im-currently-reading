@@ -50,7 +50,6 @@ class Book < ActiveRecord::Base
       self.author_name = @info["ItemAttributes"]["Author"]
     end
 
-
   end
 
   # convert array to hash
