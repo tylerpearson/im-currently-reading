@@ -4,8 +4,8 @@ html {
 }
 
 body {
-    background-color: #073136;
-    background-image: url('blurry-bg.jpg');
+    //background-color: #073136;
+    background-image: url('green-blur-bg.jpg');
     background-color: #e5e5e5;
     @include prefixer(background-size, cover, webkit moz o spec);
     color: #666;
