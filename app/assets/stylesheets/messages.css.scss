@@ -6,14 +6,17 @@
 
 .center-page {
     position: absolute;
-    top: 40%;
+    top: 200px;
     left: 50%;
     margin-left: -250px;
-    margin-top: -100px;
     -webkit-animation: welcome-in 1s ease-out;
     -moz-animation: welcome-in 1s ease-out;
     -ms-animation: welcome-in 1s ease-out;
     animation: welcome-in 1s ease-out;
+    @include transition(all 1s linear);
+    .toggle-open & {
+      top: 100px;
+    }
 }
 
 
@@ -21,7 +24,7 @@
     width: 500px;
     height: 200px;
     background: url('ajax-loader.gif') center center no-repeat #fff;
-    box-shadow: 0 0 9px rgba(0,0,0,0.2), 0 0 200px rgba(255,255,255,1), 0 1px 0 #a9a9a9, 0 2px 1px #a9a9a9;
+    box-shadow: 0 0 9px rgba(0,0,0,0.2), 0 0 250px rgba(89,132,122,0.5), 0 1px 0 #a9a9a9, 0 2px 1px #a9a9a9;
     border-radius: 4px;
 }
 
@@ -29,22 +32,21 @@
         position: relative;
         width: 100%;
         height: 100%;
-        z-index: 10;
+        z-index: 8;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.15);
     }
 
     .card-wrap-hidden {
         position: relative;
         width: 100%;
         height: 100%;
-        z-index: 10;
         position: absolute;
-        top: 40%;
+        top: 0;
         left: 50%;
         margin-left: -250px;
-        margin-top: -80px;
         overflow: hidden;
-        z-index: 1;
         border-radius: 4px;
+        background-color: #fff;
     }
 
     .card-bg {
@@ -53,7 +55,7 @@
         width: 105%;
         top: -50%;
         @include position(absolute, -60% 0 0 -2.5%);
-        z-index: 1;
+        z-index: 7;
     }
 
     .book-wrap {
@@ -64,7 +66,7 @@
         height: 220px;
         width: 140px;
         box-shadow: 0 0 5px rgba(0,0,0,.2), 0 2px 1px #a9a9a9;
-        z-index: 7;
+        z-index: 9;
     }
 
         .book {
@@ -81,6 +83,7 @@
         height: 120px;
         display: table;
         @include position(absolute, 20px 20px 0 0);
+
     }
 
 
@@ -112,7 +115,6 @@
         width: 100%;
         height: 40px;
         padding: 5px;
-        z-index: 6;
         @include position(absolute, 0 0px 0px 0);
         border-bottom-right-radius: 4px;
         border-bottom-left-radius: 4px;
@@ -136,8 +138,9 @@
               line-height: 30px;
               font-weight: bold;
               a {
+                  @include transition(all .2s linear);
                   i {
-                      font-size: 17px;
+                      font-size: 15px;
                       position: relative;
                       top: 2px;
                       margin-right: 1px;
@@ -180,3 +183,69 @@
                       }
                   }
               }
+
+  .bottom-area {
+      height: 180px;
+      width: 100%;
+      padding: 0 20px;
+      @include box-sizing(border-box);
+      @include transition(all 1s linear);
+      z-index: 0;
+      margin-top: 0;
+      &.hidden {
+          margin-top: -200px;
+      }
+  }
+
+      .bottom-content {
+          background: #fff;
+          width: 100%;
+          border-bottom-right-radius: 4px;
+          border-bottom-left-radius: 4px;
+          box-shadow: 0 0 9px rgba(0,0,0,0.2), 0 0 200px rgba(255,255,255,1), 0 1px 0 #a9a9a9;
+          padding: 30px 30px 20px;
+          z-index: 2;
+          position: relative;
+          h3 {
+              color: #333;
+              margin-bottom: 10px;
+              font-size: 14px;
+          }
+          p {
+              font-size: 12px;
+              line-height: 1.5;
+          }
+      }
+
+          .bottom-content-wrap {
+              height: 150px;
+              overflow: hidden;
+              -webkit-overflow-scrolling: touch;
+          }
+
+      .bottom-info {
+          z-index: 1;
+          position: relative;
+          .tab {
+              float: right;
+              cursor: pointer;
+              padding: 6px 15px 5px;
+              font-size: 10px;
+              font-weight: bold;
+              text-transform: uppercase;
+              background-color: #fff;
+              box-shadow: 0 0 9px rgba(0,0,0,0.2), 0 0 200px rgba(255,255,255,1), 0 1px 0 #a9a9a9;
+              border-bottom-right-radius: 4px;
+              border-bottom-left-radius: 4px;
+              color: #999;
+              margin-right: 10px;
+              @include transition(all .2s linear);
+              i {
+                  margin-left: 3px;
+                  font-weight: bold;
+              }
+              &:hover {
+                  color: #666;
+              }
+          }
+      }

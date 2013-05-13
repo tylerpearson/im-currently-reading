@@ -1,7 +1,7 @@
 <section class="card center-page">
     <div class="card-wrap">
         <div class="book-wrap">
-            <div class="book" style="background-image: url('<%= @book.medium_image_url %>');"></div><!--end .book-wrap -->
+            <div class="book" style="background-image: url('<%= @book.image_url %>');"></div><!--end .book-wrap -->
         </div><!--end .book-wrap -->
         <div class="book-header-container">
             <header class="book-header">
@@ -20,7 +20,19 @@
     <div class="card-wrap-hidden">
         <%= image_tag(@book.image_url, :class => "card-bg") %>
     </div><!--end .card-wrap -->
+    <section class="bottom-area hidden">
+        <div class="bottom-content">
+            <div class="bottom-content-wrap">
+              <h3>Book Description</h3>
+              <p><%= strip_tags(@book.description) %></p>
+            </div><!--end .bottom-content-wrap -->
+        </div><!--end .bottom-content -->
+        <div class="bottom-info">
+            <a class="toggle-bottom tab"><span class="toggle-text">View Book Description</span> <i class="icon-angle-down toggle-indicator"></i></a>
+        </div><!--end .bottom-info -->
+    </section><!--end .bottom-area -->
 </section><!--end .card -->
+
 
 
 
