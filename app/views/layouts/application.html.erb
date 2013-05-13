@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>I'm Currently Reading</title>
+  <title>I'm Currently Reading <%= @book.title.html_safe if defined?(@book) && !@book.title.nil? %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
-  <% unless @book.title.nil? %>
+  <% if defined?(@book) && !@book.title.nil? %>
   <meta property="og:title" content="<%= "I'm reading \'#{ @book.title }\'".html_safe %>">
   <% end %>
-  <% unless @book.title.nil? and @book.author_name.nil? %>
+  <% if defined?(@book) && @book.title.nil? && @book.author_name.nil? %>
   <meta property="og:description" content="<%= "I'm currently reading \'#{ @book.title }\' by #{@book.author_name}. Check it out at #{request.protocol}#{request.host_with_port}#{request.fullpath}.".html_safe %>" >
   <% end %>
-  <% unless @book.image_url.nil? %>
+  <% if defined?(@book) && @book.image_url.nil? %>
   <meta property="og:image" content="<%= @book.image_url %>" />
   <% end %>
 
