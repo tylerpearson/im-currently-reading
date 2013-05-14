@@ -6,6 +6,9 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
+  <script src="//use.typekit.net/bsg2mpo.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+
   <% if defined?(@book) && !@book.title.nil? %>
   <meta property="og:title" content="<%= "I'm reading \'#{ @book.title }\'".html_safe %>">
   <% end %>
