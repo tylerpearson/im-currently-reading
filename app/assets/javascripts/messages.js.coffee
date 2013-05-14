@@ -1,5 +1,5 @@
 ready = () ->
-    console.log "loaded"
+    #console.log "loaded"
 
 
 $(document).on 'click', '.toggle-bottom', () ->

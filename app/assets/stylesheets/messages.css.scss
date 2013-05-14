@@ -3,10 +3,95 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.comment {
+    @include position(absolute, 15px 0 0 15px);
+    width: 330px;
+}
+
+    .avatar-link {
+        text-decoration: none;
+        &:active {
+            position: relative;
+            top: 1px;
+        }
+    }
+
+    .arrow-left {
+        position: relative;
+        background: #ffffff;
+    }
+    .arrow-left:after {
+        right: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+    }
+
+    .arrow-left:after {
+        border-color: rgba(255, 255, 255, 0);
+        border-right-color: #ffffff;
+        border-width: 8px;
+        top: 50%;
+        margin-top: -8px;
+        box-shadow: inset 0 -7px 7px rgba(100,100,100,0.05);
+    }
+
+    .avatar-wrap {
+        padding: 3px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #fff;
+        display: inline-block;
+        vertical-align: middle;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px 0px, inset 0 -7px 7px rgba(100,100,100,0.05);
+    }
+
+        .avatar {
+            @include prefixer(background-size, cover, webkit moz o spec);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            //-webkit-filter: grayscale(75%);
+        }
+
+    .message-wrap {
+        display: inline-block;
+        vertical-align: middle;
+        width: 255px;
+        margin-left: 10px;
+        padding: 10px 15px;
+        background-color: #fff;
+        border-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px 0px, inset 0 -7px 7px rgba(100,100,100,0.05);
+    }
+
+        .message {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #555;
+            text-shadow: 0 1px 0 #fff;
+        }
+
+    .comment-row:last-child {
+        padding-top: 5px;
+    }
+
+    .post-meta {
+        text-align: right;
+        color: $gold;
+        font-size: 12px;
+        text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
+        font-weight: 700;
+    }
+
 
 .center-page {
     position: absolute;
-    top: 200px;
+    top: 25%;
     left: 50%;
     margin-left: -250px;
     -webkit-animation: welcome-in 1s ease-out;
@@ -15,7 +100,7 @@
     animation: welcome-in 1s ease-out;
     @include transition(all 1s linear);
     .toggle-open & {
-      top: 100px;
+      top: 15%;
     }
 }
 
@@ -169,6 +254,9 @@
               .facebook-share {
                   a {
                       color: $facebook-color;
+                      i {
+                        top: 1px;
+                      }
                       &:hover {
                           color: darken($facebook-color,5%);
                       }
@@ -193,7 +281,7 @@
       z-index: 0;
       margin-top: 0;
       &.hidden {
-          margin-top: -195px;
+          margin-top: -200px;
           .bottom-content-wrap {
               overflow: hidden;
           }
@@ -205,10 +293,11 @@
           width: 100%;
           // border-bottom-right-radius: 3px;
           // border-bottom-left-radius: 3px;
-          box-shadow: 0 0 9px rgba(0,0,0,0.2), 0 0 200px rgba(255,255,255,1), rgba(0, 0, 0, 0.25) 0 1px 3px 0px;
+          box-shadow: 0 0 9px rgba(0,0,0,0.2), rgba(0, 0, 0, 0.25) 0 1px 3px 0px;
           padding: 30px 30px 20px;
           z-index: 2;
           position: relative;
+          border-radius: 0 0 2px 2px;
           h3 {
               color: #333;
               margin-bottom: 10px;
@@ -239,13 +328,12 @@
               text-transform: uppercase;
               background-color: #fff;
               box-shadow: 0 0 9px rgba(0,0,0,0.2), rgba(0, 0, 0, 0.25) 0 1px 3px 0px;
-              // border-bottom-right-radius: 3px;
-              // border-bottom-left-radius: 3px;
               color: #888;
               margin-right: 10px;
               @include transition(all .2s linear);
               width: 170px;
               text-align: center;
+              border-radius: 0 0 2px 2px;
               i {
                   margin-left: 3px;
                   font-weight: bold;

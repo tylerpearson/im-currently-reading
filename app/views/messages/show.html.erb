@@ -1,3 +1,32 @@
+<a class="logo top-right-logo" href="/"><i class="icon-book logo-icon"></i> i'm currently reading</a>
+
+<section class="comment">
+  <div class="comment-row cf">
+      <a href="http://twitter.com/tylerpearson" class="avatar-link">
+          <div class="avatar-wrap">
+              <div class="avatar" style="background-image: url('http://api.twitter.com/1/users/profile_image?screen_name=tylerpearson&amp;size=bigger');">
+
+              </div><!--end .avatar -->
+          </div><!--end .avatar-circle -->
+      </a>
+
+      <div class="message-wrap arrow-left">
+          <div class="message">
+              <%= @message.message %>
+          </div><!--end .message -->
+      </div><!--end .message-wrap -->
+  </div><!-- .comment-row -->
+
+  <div class="comment-row cf">
+      <div class="post-meta">
+          shared <%= time_ago_in_words(@message.created_at) %> ago
+      </div><!--end .post-meta -->
+  </div><!--end .comment-row -->
+
+</section><!--end .comment -->
+
+
+
 <section class="card center-page">
     <div class="card-wrap">
         <div class="book-wrap">
@@ -11,8 +40,8 @@
         </div><!--end .book-header-container -->
         <div class="share-bar">
             <ul class="share-links">
-                <li class="share-links-item twitter-share"><a href="#"><i class="icon-twitter"></i> Share</a></li>
-                <li class="share-links-item facebook-share"><a href="#"><i class="icon-facebook"></i> Share</a></li>
+                <li class="share-links-item twitter-share"><a href="https://twitter.com/intent/tweet?&amp;text=<%=u "I'm currently reading " + truncate(@book.title, :length => 90, :separator => ' ', :omission => '...') + " by #{@book.author_name} #{request.protocol}#{request.host_with_port}#{request.fullpath} #nowreading" %> "><i class="icon-twitter"></i> Share</a></li>
+                <li class="share-links-item facebook-share"><a target="_blank" href="http://www.facebook.com/sharer.php?u=<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>"><i class="icon-facebook"></i> Share</a></li>
                 <li class="share-links-item amazon-share"><%= link_to "<i class=\"icon-amazon\"></i> View".html_safe, @book.amazon_url %></li>
             </ul>
         </div><!--end .share-bar -->
