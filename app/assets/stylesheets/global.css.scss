@@ -7,7 +7,7 @@ body {
     background-image: url('wood-bg.jpg');
     background-color: #e5e5e5;
     @include prefixer(background-size, cover, webkit moz o spec);
-    color: #666;
+    color: #fff;
     font-family: "proxima-nova-soft", "Proxima Nova Soft", "Helvetica Neue", helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
