@@ -1,14 +1,13 @@
 ImCurrentlyReading::Application.routes.draw do
 
 
-
-  root :to => 'messages#new', as: :new_message
+  root :to => 'messages#new'
 
   get "api/books"
 
-  resources :messages, :except => [:show, :new]
+  resources :messages
 
-  match '/:id' => 'messages#show', as: :message
+  match '/:id' => 'messages#show'
 
 
 

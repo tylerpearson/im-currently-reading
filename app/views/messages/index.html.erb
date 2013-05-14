@@ -1,25 +1,27 @@
-<h1>Listing messages</h1>
+<div class="messages-table">
 
-<table>
-  <tr>
-    <th>Message</th>
-    <th>Book</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <h1>Listing messages</h1>
 
-<% @messages.each do |message| %>
-  <tr>
-    <td><%= message.message %></td>
-    <td><%= message.book_id %></td>
-    <td><%= link_to 'Show', message %></td>
-    <td><%= link_to 'Edit', edit_message_path(message) %></td>
-    <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <table>
+      <tr>
+        <th>Message</th>
+        <th>Book</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
 
-<br />
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.message %></td>
+        <td><%= message.book.title %></td>
+        <td><%= link_to 'Show', message %></td>
+        <td><%= link_to 'Edit', edit_message_path(message) %></td>
+        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
+
+</div><!--end .message-table -->
 
 <%= link_to 'New Message', new_message_path %>
