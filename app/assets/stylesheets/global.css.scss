@@ -5,7 +5,7 @@ html {
 
 body {
     background-image: url('wood-bg.jpg');
-    background-color: #e5e5e5;
+    background-color: #d6a87a;
     @include prefixer(background-size, cover, webkit moz o spec);
     color: #fff;
     font-family: "proxima-nova-soft", "Proxima Nova Soft", "Helvetica Neue", helvetica, sans-serif;
@@ -32,12 +32,16 @@ a {
     color: $gold;
     font-size: 30px;
     text-decoration: none;
-    @include transition(all 1s linear);
+    @include transition(all .5s linear);
     &.top-right-logo {
         @include position(absolute, 30px 40px 0 0);
     }
     &.top-left-logo {
         @include position(absolute, 30px 0 0 40px);
+    }
+    &.top-center-logo {
+        @include position(absolute, 30px 0 0 50%);
+        margin-left: -103px;
     }
     &:hover {
         color: #fff;

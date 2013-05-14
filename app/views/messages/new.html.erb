@@ -1,7 +1,15 @@
-<a class="logo top-left-logo" href="/"><i class="icon-book logo-icon"></i> i'm currently reading</a>
+<a class="logo top-center-logo" href="/"><i class="icon-book logo-icon"></i> i'm currently reading</a>
 
 <section class="center-page">
 
-    <%= render 'form' %>
+    <div class="start-wrap">
+
+        <input type="text" placeholder="Book Title" class="text-input" id="book-title-input">
+
+        <div style="display: none;">
+          <%= render 'form' %>
+        </div>
+
+    </div><!--end .start-wrap -->
 
 </section><!--end .center-page -->

@@ -335,6 +335,7 @@
               width: 170px;
               text-align: center;
               border-radius: 0 0 2px 2px;
+              @include user-select(none);
               i {
                   margin-left: 3px;
                   font-weight: bold;

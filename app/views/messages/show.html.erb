@@ -2,13 +2,13 @@
 
 <section class="comment">
   <div class="comment-row cf">
-      <a href="http://twitter.com/tylerpearson" class="avatar-link">
+      <% unless @message.twitter_username.nil? %>
+      <a href="http://twitter.com/<%= @message.twitter_username %>" class="avatar-link">
           <div class="avatar-wrap">
-              <div class="avatar" style="background-image: url('http://api.twitter.com/1/users/profile_image?screen_name=tylerpearson&amp;size=bigger');">
-
-              </div><!--end .avatar -->
+              <div class="avatar" style="background-image: url('<%= "http://api.twitter.com/1/users/profile_image?screen_name=#{@message.twitter_username}&size=bigger" %>');"></div><!--end .avatar -->
           </div><!--end .avatar-circle -->
       </a>
+      <% end %>
 
       <div class="message-wrap arrow-left">
           <div class="message">
@@ -49,6 +49,8 @@
     <div class="card-wrap-hidden">
         <%= image_tag(@book.image_url, :class => "card-bg") %>
     </div><!--end .card-wrap -->
+
+    <% unless @book.description.nil? %>
     <section class="bottom-area hidden">
         <div class="bottom-content">
             <div class="bottom-content-wrap">
@@ -60,6 +62,7 @@
             <a class="toggle-bottom tab"><span class="toggle-text">View Book Description</span> <i class="icon-angle-down toggle-indicator"></i></a>
         </div><!--end .bottom-info -->
     </section><!--end .bottom-area -->
+    <% end %>
 </section><!--end .card -->
 
 

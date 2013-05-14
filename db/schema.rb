@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512172913) do
+ActiveRecord::Schema.define(:version => 20130514022843) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -39,9 +39,10 @@ ActiveRecord::Schema.define(:version => 20130512172913) do
   create_table "messages", :force => true do |t|
     t.text     "message"
     t.integer  "book_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "slug"
+    t.string   "twitter_username"
   end
 
   add_index "messages", ["slug"], :name => "index_messages_on_slug"
