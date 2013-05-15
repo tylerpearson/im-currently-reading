@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @book    = Book.where(amazon_asin: params[:amazon_asin]).first_or_create
+    @book    = Book.where(amazon_asin: params[:book][:amazon_asin]).first_or_create
     @message = Message.new(message: params[:message][:message], book_id: @book.id, twitter_username: params[:message][:twitter_username] )
 
 

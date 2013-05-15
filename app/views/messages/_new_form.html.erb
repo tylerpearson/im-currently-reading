@@ -1,0 +1,47 @@
+<%= form_for @message, html: {class: "form"} do |f| %>
+    <div class="step-1 step start">
+        <div class="narrow-container" style="display: block;">
+
+            <p class="input-prompt">Hi! What are you reading?</p>
+            <input type="text" placeholder="Book Title" class="text-input" id="book-title-input">
+
+
+            <i class="icon-circle-arrow-right next-button"></i>
+
+        </div><!--end .narrow-container -->
+    </div><!-- end .step-1 -->
+
+    <div class="step-2 step books" style="display: none;">
+        <div class="book-list">
+
+            <ul class="matching-books">
+                <li class="matched-book"><a href=""></a></li>
+                <li class="matched-book"><a href=""></a></li>
+                <li class="matched-book"><a href=""></a></li>
+                <li class="matched-book"><a href=""></a></li>
+                <li class="matched-book"><a href=""></a></li>
+                <li class="matched-book"><a href=""></a></li>
+            </ul>
+
+            <%= hidden_field(:book, :amazon_asin, :id => 'amazon_asin') %>
+
+        </div><!--end .book-list -->
+    </div><!--end .step-2 -->
+
+    <div class="step-3 step" style="display: none;">
+        <div class="narrow-container">
+
+            <div class="input-area">
+                <label class="input-prompt">What's your twitter username?</label>
+                <%= f.text_field :twitter_username %>
+            </div><!-- .input-area -->
+
+            <div class="input-area">
+                <label class="input-prompt">Want to add a message about the book?</labeL>
+                <%= f.text_area :message %>
+            </div><!-- .input-area -->
+
+            <%= f.submit %>
+        </div><!--end .narrow-container-->
+    </div><!--end .step-4 -->
+<% end %>

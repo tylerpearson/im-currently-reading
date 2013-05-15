@@ -1,3 +1,75 @@
-.start-wrap {
+.new-center {
     width: 500px;
+    margin-left: -250px;
+    @include position(absolute, 25% 0 0 50%);
+    @include prefixer(animation,  welcome-in 1s ease-out, webkit moz ms o spec);
+    -webkit-backface-visibility: hidden;
+}
+
+.narrow-container {
+    width: 84%;
+    margin: 0 auto;
+}
+
+.form {
+
+    input {
+        font-family: "proxima-nova-soft", "Proxima Nova Soft", "Helvetica Neue", helvetica, sans-serif;
+    }
+
+    input[type="text"], textarea {
+        width: 100%;
+        font-size: 20px;
+        border-radius: 3px;
+        border: none;
+        padding: 12px 20px;
+        box-shadow: 0 0 9px rgba(0,0,0,0.2), rgba(0, 0, 0, 0.25) 0 1px 3px 0px;
+        @include transition(all .5s linear);
+        outline: none;
+        &:focus {
+            box-shadow: 0 0 20px rgba(0,0,0,0.5)
+        }
+    }
+
+    textarea {
+        height: 80px;
+        font-size: 14px;
+    }
+}
+
+    .next-button {
+        float: right;
+        position: relative;
+        top: -38px;
+        font-size: 26px;
+        color: $gold;
+        margin-right: 17px;
+        cursor: pointer;
+        @include transition(all .5s linear);
+
+        opacity: 0;
+
+        &.show-me {
+            opacity: 1;
+        }
+        &:hover {
+            color: darken($gold,20%);
+        }
+    }
+
+
+.input-prompt {
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+    @include user-select(none);
+    cursor: default;
+    display: block;
+}
+
+.input-area {
+    margin-bottom: 25px;
 }

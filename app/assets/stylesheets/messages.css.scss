@@ -55,7 +55,6 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            //-webkit-filter: grayscale(75%);
         }
 
     .message-wrap {
@@ -94,10 +93,7 @@
     top: 25%;
     left: 50%;
     margin-left: -250px;
-    -webkit-animation: welcome-in 1s ease-out;
-    -moz-animation: welcome-in 1s ease-out;
-    -ms-animation: welcome-in 1s ease-out;
-    animation: welcome-in 1s ease-out;
+    @include prefixer(animation,  welcome-in 1s ease-out, webkit moz ms o spec);
     @include transition(all 1s linear);
     .toggle-open & {
       top: 15%;
@@ -110,7 +106,6 @@
     height: 200px;
     background: url('ajax-loader.gif') center center no-repeat #fff;
     box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px 0px, 0 0 9px rgba(0,0,0,0.2), 0 0 250px rgba(89,132,122,0.5);
-    // border-radius: 3px;
 }
 
     .card-wrap {
@@ -130,7 +125,6 @@
         left: 50%;
         margin-left: -250px;
         overflow: hidden;
-        // border-radius: 4px;
         background-color: #fff;
     }
 
@@ -146,7 +140,6 @@
     .book-wrap {
         padding: 5px;
         background: url('ajax-loader.gif') center center no-repeat #fff;
-        // border-radius: 4px;
         @include position(absolute, -10px 0 0 10px);
         height: 220px;
         width: 140px;
@@ -157,10 +150,8 @@
         .book {
             width: 100%;
             height: 100%;
-            // border-radius: 4px;
             @include prefixer(background-size, cover, webkit moz o spec);
             background-position: top center;
-            //box-shadow: inset 2px -1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
 
@@ -201,8 +192,6 @@
         height: 40px;
         padding: 5px;
         @include position(absolute, 0 0px 0px 0);
-        // border-bottom-right-radius: 4px;
-        // border-bottom-left-radius: 4px;
         box-shadow: 0 0 5px rgba(0,0,0,.2), inset 0 -7px 7px rgba(100,100,100,0.05);
     }
 
@@ -291,8 +280,6 @@
       .bottom-content {
           background: #fff;
           width: 100%;
-          // border-bottom-right-radius: 3px;
-          // border-bottom-left-radius: 3px;
           box-shadow: 0 0 9px rgba(0,0,0,0.2), rgba(0, 0, 0, 0.25) 0 1px 3px 0px;
           padding: 30px 30px 20px;
           z-index: 2;
