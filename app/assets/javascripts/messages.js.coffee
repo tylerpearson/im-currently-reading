@@ -11,7 +11,7 @@ ready = () ->
 
     username = localStorage.getItem('username')
 
-    unless name is undefined or name is null
+    unless username is undefined or username is null
         $('#message_twitter_username').val(username)
 
 
