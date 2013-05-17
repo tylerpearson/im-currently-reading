@@ -6,6 +6,16 @@ ready = () ->
             $('.next-button').click()
 
 
+    $('#new_message').on 'submit', () ->
+        localStorage.setItem('username', $('#message_twitter_username').val())
+
+    username = localStorage.getItem('username')
+
+    unless name is undefined or name is null
+        $('#message_twitter_username').val(username)
+
+
+
 $(document).on('page:load ready', ready)
 
 
@@ -35,6 +45,8 @@ $(document).on 'click', '.toggle-bottom', () ->
 ##
 # New message/book page (showing as the homepage currently)
 ##
+
+
 
 $(document).on 'focus', '#book-title-input', () ->
     $nextButton = $('.next-button')
