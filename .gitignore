@@ -19,3 +19,6 @@
 
 
 .DS_Store
+
+# hides psds because the files are super big
+/psd
