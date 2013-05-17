@@ -10,7 +10,7 @@
         </div><!--end .narrow-container -->
     </div><!-- end .step-1 -->
 
-    <div class="step-2 step books loading" style="display: none;">
+    <div class="step-2 step books loading top-align" style="display: none;">
 
         <div class="loading-message"></div><!--end .loading-message -->
 
@@ -20,8 +20,16 @@
 
             <script id="book-template" type="x-handlebars-template">
                {{#each this}}
-                <li class="book-preview" data-amazon-asin-id="{{ asinId }}">
-                  {{ title }}
+                <li class="book-preview cf book-preview-{{addition @index to=1}}" data-amazon-asin-id="{{ asinId }}">
+                    <div class="preview-left">
+                      <div class="preview-book-wrap">
+                        <div class="preview-book" style="background-image: url('{{ images.large.URL }}');"></div>
+                      </div>
+                    </div>
+                    <div class="preview-right">
+                      <h1 class="preview-book-title">{{ title }}</h1>
+                      <h2 class="preview-book-author">{{ author }}</h2>
+                    </div>
                 </li>
                 {{/each}}
             </script> 
@@ -44,7 +52,7 @@
                 <%= f.text_area :message %>
             </div><!-- .input-area -->
 
-            <%= f.submit %>
+            <%= f.submit "Create" %>
         </div><!--end .narrow-container-->
     </div><!--end .step-4 -->
 <% end %>

@@ -1,13 +1,17 @@
 .new-center {
-    width: 500px;
-    margin-left: -250px;
+    width: 90%;
+    margin-left: -45%;
     @include position(absolute, 25% 0 0 50%);
     @include prefixer(animation,  welcome-in 1s ease-out, webkit moz ms o spec);
     -webkit-backface-visibility: hidden;
 }
 
+    .top-align {
+        margin-top: -7.5%;
+    }
+
 .narrow-container {
-    width: 84%;
+    width: 500px;
     margin: 0 auto;
 }
 
@@ -27,13 +31,32 @@
         @include transition(all .5s linear);
         outline: none;
         &:focus {
-            box-shadow: 0 0 20px rgba(0,0,0,0.5)
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
     }
 
     textarea {
         height: 80px;
         font-size: 14px;
+    }
+
+    input[type="submit"] {
+        float: right;
+        box-shadow: 0 0 9px rgba(0,0,0,0.2), rgba(0, 0, 0, 0.25) 0 1px 3px 0px;
+        color: #fff;
+        font-size: 16px;
+        padding: 10px 25px;
+        border: none;
+        background: $gold;
+        cursor: pointer;
+        border-radius: 3px;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+        @include transition(all .2s linear);
+        font-weight: bold;
+        &:hover {
+            background: lighten($gold,5%);
+            @include position(relative, 1px 0 0 0);
+        }
     }
 }
 
@@ -79,9 +102,6 @@
     text-align: center;
     width: 100%;
     height: 20px;
-    // background-image: url('orange-loading.gif');
-    // background-repeat: no-repeat;
-    // background-position: center center;
     .loading & {
        display: block;
     }
@@ -98,4 +118,64 @@
 
 .book-preview {
     cursor: pointer;
+    position: relative;
+    width: 29%;
+    margin: 0 2% 30px;
+    float: left;
+    margin-bottom: 30px;
+
+    &:hover {
+        .preview-book-title {
+            color: lighten($gold,15%);
+        }
+        position: relative;
+        top: 1px;
+    }
+    &:active {
+        position: relative;
+        top: 2px;
+    }
 }
+
+    .book-preview-9 {
+        display: none;
+    }
+
+    .preview-left {
+        float: left;
+        margin-right: 15px;
+        margin-bottom: 15px;
+    }
+
+        .preview-book-wrap {
+            background-color: #fff;
+            padding: 5px;
+            background: url('ajax-loader.gif') center center no-repeat #fff;
+            height: 120px;
+            width: 90px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0 1px 3px 0px, 0 0 3px 3px rgba(0,0,0,0.1);
+            @include transition(all .2s linear);
+        }
+
+            .preview-book {
+                height: 100%;
+                width: 100%;
+                @include prefixer(background-size, cover, webkit moz o spec);
+                background-position: top center;
+            }
+
+    .preview-right {
+
+    }
+
+        .preview-book-title {
+             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+             font-size: 18px;
+             line-height: 1.2;
+             margin-bottom: 5px;
+        }
+
+        .preview-book-author {
+             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+             font-size: 13px;
+        }

@@ -1,5 +1,8 @@
 ready = () ->
-    #console.log "loaded"
+
+    $("#book-title-input").keyup (e) ->
+        if e.keyCode is 13
+            $('.next-button').click()
 
 
 $(document).on('page:load ready', ready)
@@ -38,6 +41,7 @@ $(document).on 'focus', '#book-title-input', () ->
     $nextButton = $('.next-button')
     $nextButton.addClass('show-me') unless $nextButton.hasClass('show-me')
 
+
 $(document).on 'click', '.next-button', () ->
     $('.step-1').fadeOut(225, () ->
 
@@ -51,6 +55,8 @@ $(document).on 'click', '.next-button', () ->
           data :
               title : bookTitle
           success  : (res, status, xhr) ->
+
+              console.log(res)
 
               booksData      = res
               templateScript = $("#book-template").html()
@@ -76,4 +82,9 @@ $(document).on 'click', '.book-preview', (e) ->
 
     $('.step-2').fadeOut 225, () ->
         $('.step-3').fadeIn(1000)
+
+
+
+Handlebars.registerHelper "addition", (context, options) ->
+  context + parseFloat(options.hash.to)
 
