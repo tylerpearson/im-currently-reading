@@ -5,9 +5,9 @@ ImCurrentlyReading::Application.routes.draw do
 
   get "api/books"
 
-  resources :messages
+  resources :messages, :except => [:show]
 
-  match '/:id' => 'messages#show'
+  match '/:id' => 'messages#show', as: :message
 
 
 

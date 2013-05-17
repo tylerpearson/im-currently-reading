@@ -5,23 +5,26 @@
             <p class="input-prompt">Hi! What are you reading?</p>
             <input type="text" placeholder="Book Title" class="text-input" id="book-title-input">
 
-
             <i class="icon-circle-arrow-right next-button"></i>
 
         </div><!--end .narrow-container -->
     </div><!-- end .step-1 -->
 
-    <div class="step-2 step books" style="display: none;">
+    <div class="step-2 step books loading" style="display: none;">
+
+        <div class="loading-message"></div><!--end .loading-message -->
+
         <div class="book-list">
 
-            <ul class="matching-books">
-                <li class="matched-book"><a href=""></a></li>
-                <li class="matched-book"><a href=""></a></li>
-                <li class="matched-book"><a href=""></a></li>
-                <li class="matched-book"><a href=""></a></li>
-                <li class="matched-book"><a href=""></a></li>
-                <li class="matched-book"><a href=""></a></li>
-            </ul>
+            <ul class="matching-books" id="matching-books"></ul>
+
+            <script id="book-template" type="x-handlebars-template">
+               {{#each this}}
+                <li class="book-preview" data-amazon-asin-id="{{ asinId }}">
+                  {{ title }}
+                </li>
+                {{/each}}
+            </script> 
 
             <%= hidden_field(:book, :amazon_asin, :id => 'amazon_asin') %>
 

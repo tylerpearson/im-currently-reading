@@ -28,6 +28,8 @@ $(document).on 'click', '.toggle-bottom', () ->
       $toggleIndicator.toggleClass('icon-angle-down').toggleClass('icon-angle-up')
 
 
+
+
 ##
 # New message/book page (showing as the homepage currently)
 ##
@@ -47,15 +49,31 @@ $(document).on 'click', '.next-button', () ->
         # get books from the api that match
         $.ajax '/api/books.json',
           data :
-            title : bookTitle
+              title : bookTitle
           success  : (res, status, xhr) ->
-              console.log(res)
+
+              booksData      = res
+              templateScript = $("#book-template").html()
+              template       = Handlebars.compile(templateScript)
+
+              $("#matching-books").append(template(booksData))
+
+              $('.step-2').fadeIn(1000).removeClass('loading')
+
           error    : (xhr, status, err) ->
-              console.log(erro)
+              alert("Oh no! There was an error: " + err)
           complete : (xhr, status) ->
               console.log(xhr, status)
-
-
-        $('.step-2').fadeIn(1000)
       )
+
+$(document).on 'click', '.book-preview', (e) ->
+    e.preventDefault()
+
+    $this  = $(@)
+    bookId = $(@).data('amazon-asin-id')
+
+    $('#amazon_asin').val(bookId)
+
+    $('.step-2').fadeOut 225, () ->
+        $('.step-3').fadeIn(1000)
 

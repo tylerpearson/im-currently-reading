@@ -14,7 +14,7 @@
 .form {
 
     input {
-        font-family: "proxima-nova-soft", "Proxima Nova Soft", "Helvetica Neue", helvetica, sans-serif;
+        font-family: $body-font;
     }
 
     input[type="text"], textarea {
@@ -72,4 +72,30 @@
 
 .input-area {
     margin-bottom: 25px;
+}
+
+
+.loading-message {
+    text-align: center;
+    width: 100%;
+    height: 20px;
+    // background-image: url('orange-loading.gif');
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    .loading & {
+       display: block;
+    }
+}
+
+
+
+.book-list {
+
+    .loading & {
+        display: none;
+    }
+}
+
+.book-preview {
+    cursor: pointer;
 }
