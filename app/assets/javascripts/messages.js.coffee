@@ -1,3 +1,4 @@
+# on load and turbolinks page change
 ready = () ->
 
     $("#book-title-input").keyup (e) ->
@@ -31,8 +32,6 @@ $(document).on 'click', '.toggle-bottom', () ->
       $toggleIndicator.toggleClass('icon-angle-down').toggleClass('icon-angle-up')
 
 
-
-
 ##
 # New message/book page (showing as the homepage currently)
 ##
@@ -41,22 +40,17 @@ $(document).on 'focus', '#book-title-input', () ->
     $nextButton = $('.next-button')
     $nextButton.addClass('show-me') unless $nextButton.hasClass('show-me')
 
-
 $(document).on 'click', '.next-button', () ->
     $('.step-1').fadeOut(225, () ->
 
         # get the entered title of the book
         bookTitle = $('#book-title-input').val()
 
-        console.log("Title: #{bookTitle}")
-
         # get books from the api that match
         $.ajax '/api/books.json',
           data :
               title : bookTitle
           success  : (res, status, xhr) ->
-
-              console.log(res)
 
               booksData      = res
               templateScript = $("#book-template").html()
@@ -68,8 +62,9 @@ $(document).on 'click', '.next-button', () ->
 
           error    : (xhr, status, err) ->
               alert("Oh no! There was an error: " + err)
+              $('.step-1').fadeIn(1000)
           complete : (xhr, status) ->
-              console.log(xhr, status)
+              #console.log(xhr, status)
       )
 
 $(document).on 'click', '.book-preview', (e) ->
@@ -84,7 +79,8 @@ $(document).on 'click', '.book-preview', (e) ->
         $('.step-3').fadeIn(1000)
 
 
-
+##
+# Addition helper for Handlebars
+##
 Handlebars.registerHelper "addition", (context, options) ->
   context + parseFloat(options.hash.to)
-
