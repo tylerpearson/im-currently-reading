@@ -6,7 +6,10 @@ TIMEOUT=${TIMEOUT-60}
 APP_ROOT=/home/deployer/apps/imcurrentlyreading/current
 PID=$APP_ROOT/tmp/pids/unicorn.pid
 
-. ./env_vars.sh
+export AWS_ACCESS_KEY="AKIAJKAHV2TBQBHHOMIA"
+export AWS_SECRET_KEY="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"
+export AWS_ASSOCIATE_TAG="1336-2615-6166"
+export ADMIN_PASS="meatball"
 
 CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
 AS_USER=deployer
