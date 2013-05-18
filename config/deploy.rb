@@ -2,14 +2,14 @@ require "bundler/capistrano"
 
 server "198.199.82.189", :web, :app, :db, primary: true
 
-set :application, "im-currently-reading"
+set :application, "imcurrentlyreading"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
 
 set :scm, "git"
-set :repository, "git@github.com:tylerpearson/#{application}.git"
+set :repository, "git@github.com:tylerpearson/im-currently-reading.git"
 set :branch, "master"
 
 default_run_options[:pty] = true
