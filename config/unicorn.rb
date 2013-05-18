@@ -1,4 +1,4 @@
-root = "/home/deployer/apps/im-currently-reading/current"
+root = "/home/deployer/apps/imcurrentlyreading/current"
 working_directory root
 pid "#{root}/tmp/pids/unicorn.pid"
 stderr_path "#{root}/log/unicorn.log"
