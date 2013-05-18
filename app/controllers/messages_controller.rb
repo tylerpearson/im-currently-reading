@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
 
-  http_basic_authenticate_with :name => "admin", :password => ENV["ADMIN_PASS"], :except => [:show, :new, :create]
+  http_basic_authenticate_with :name => "admin", :password => "meatballs", :except => [:show, :new, :create]
 
   # GET /messages
   # GET /messages.json
