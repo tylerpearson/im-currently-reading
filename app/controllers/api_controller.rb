@@ -2,13 +2,13 @@ class ApiController < ApplicationController
 
   def books
 
+    puts ENV["AWS_SECRET_KEY"]
+
     Amazon::Ecs.options = {
       :associate_tag     => ENV["AWS_ASSOCIATE_TAG"],
       :AWS_access_key_id => ENV["AWS_ACCESS_KEY"],
       :AWS_secret_key    => ENV["AWS_SECRET_KEY"]
     }
-
-    puts Amazon::Ecs.options
 
     res = Amazon::Ecs.item_search(params[:title], {:response_group => 'Medium', :sort => 'relevancerank'})
 
