@@ -25,8 +25,11 @@ gem 'bourbon'
 # Use Turbolinks
 gem 'turbolinks'
 
-# Use Thin server
-gem 'thin'
+# Use Unicorn server
+gem 'unicorn'
+
+# Deploy with Capistrano
+gem 'capistrano'
 
 # Amazon Product API
 gem 'amazon-ecs'
