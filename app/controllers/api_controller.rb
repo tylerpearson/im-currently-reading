@@ -2,8 +2,6 @@ class ApiController < ApplicationController
 
   def books
 
-    puts ENV["AWS_SECRET_KEY"]
-
     Amazon::Ecs.options = {
       :associate_tag     => ENV["AWS_ASSOCIATE_TAG"],
       :AWS_access_key_id => ENV["AWS_ACCESS_KEY"],
@@ -12,10 +10,9 @@ class ApiController < ApplicationController
 
     res = Amazon::Ecs.item_search(params[:title], {:response_group => 'Medium', :sort => 'relevancerank'})
 
+
     if res.is_valid_request?
       @results = to_hash(res.items)
-    else
-      puts res
     end
 
     @title = @results.as_json
