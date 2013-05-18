@@ -8,10 +8,14 @@ class ApiController < ApplicationController
       :AWS_secret_key    => ENV["AWS_SECRET_KEY"]
     }
 
+    puts Amazon::Ecs.options
+
     res = Amazon::Ecs.item_search(params[:title], {:response_group => 'Medium', :sort => 'relevancerank'})
 
     if res.is_valid_request?
       @results = to_hash(res.items)
+    else
+      puts res
     end
 
     @title = @results.as_json
