@@ -35,15 +35,16 @@ gem 'amazon-ecs'
 # https://github.com/laserlemon/figaro
 gem 'figaro'
 
+gem 'sqlite3'
+
 # development
 group :development do
-  gem 'sqlite3'
   gem 'quiet_assets'
 end
 
 # production
 group :production do
-  gem 'pg'
+   gem 'pg'
 end
 
 # slugs

@@ -22,3 +22,6 @@
 
 # hides psds because the files are super big
 /psd
+
+
+/config/database.yml
