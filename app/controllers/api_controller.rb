@@ -2,8 +2,6 @@ class ApiController < ApplicationController
 
   def books
 
-    puts ENV["AWS_SECRET_KEY"]
-
     Amazon::Ecs.options = {
       :associate_tag     => "1336-2615-6166",
       :AWS_access_key_id => "/323HRCmUnNsbpqZ8YeANeiXanx59D0WObhKkxSg",
@@ -11,6 +9,11 @@ class ApiController < ApplicationController
     }
 
     res = Amazon::Ecs.item_search(params[:title], {:response_group => 'Medium', :sort => 'relevancerank'})
+
+    if Rails.env.production?
+      puts res
+      puts res.error
+    end
 
     if res.is_valid_request?
       @results = to_hash(res.items)
