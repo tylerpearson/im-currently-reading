@@ -4,8 +4,8 @@ class ApiController < ApplicationController
 
     Amazon::Ecs.options = {
       :associate_tag     => '1336-2615-6166',
-      :AWS_access_key_id => 'AKIAJKAHV2TBQBHHOMIA',
-      :AWS_secret_key    => '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'
+      :AWS_access_key_id => '#',
+      :AWS_secret_key    => '#'
     }
 
     res = Amazon::Ecs.item_search(params[:title], {:response_group => 'Medium', :sort => 'relevancerank'})
