@@ -15,9 +15,9 @@ class Book < ActiveRecord::Base
   def add_amazon_info
 
     Amazon::Ecs.options = {
-      :associate_tag     => ENV["AWS_ASSOCIATE_TAG"],
-      :AWS_access_key_id => ENV["AWS_ACCESS_KEY"],
-      :AWS_secret_key    => ENV["AWS_SECRET_KEY"]
+          :associate_tag     => '1336-2615-6166',
+          :AWS_access_key_id => 'AKIAJKAHV2TBQBHHOMIA',
+          :AWS_secret_key    => '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'
     }
 
     res = Amazon::Ecs.item_lookup(self.amazon_asin, {:response_group => 'Medium', :sort => 'relevancerank'})
