@@ -40,7 +40,7 @@
         </div><!--end .book-header-container -->
         <div class="share-bar">
             <ul class="share-links">
-                <li class="share-links-item twitter-share"><a href="https://twitter.com/intent/tweet?&amp;text=<%=u "I'm currently reading " + truncate(@book.title, :length => 90, :separator => ' ', :omission => '...') + " by #{@book.author_name} #{request.protocol}#{request.host_with_port}#{request.fullpath} #nowreading" %>" target="_blank"><i class="icon-twitter"></i> Share</a></li>
+                <li class="share-links-item twitter-share"><a href="https://twitter.com/intent/tweet?&amp;text=<%=u "I'm reading " + truncate(@book.title, :length => 90, :separator => ' ', :omission => '...') + " by #{@book.author_name} #{request.protocol}#{request.host_with_port}#{request.fullpath} #nowreading" %>" target="_blank"><i class="icon-twitter"></i> Share</a></li>
                 <li class="share-links-item facebook-share"><a target="_blank" href="http://www.facebook.com/sharer.php?u=<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>"><i class="icon-facebook"></i> Share</a></li>
                 <li class="share-links-item amazon-share"><%= link_to "<i class=\"icon-amazon\"></i> View".html_safe, @book.amazon_url, target: "_blank" %></li>
             </ul>
