@@ -73,7 +73,7 @@ $(document).on 'click', '.next-button', () ->
               $('.step-2').fadeIn(1000).removeClass('loading')
 
           error    : (xhr, status, err) ->
-              alert("Oh no! There was an error: " + err)
+              alert("Dang it, something went wrong getting book results from Amazon.")
               $('.step-1').fadeIn(1000)
           complete : (xhr, status) ->
               #console.log(xhr, status)
