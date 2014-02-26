@@ -5,7 +5,7 @@ This is an weekend project app I put together to share books that you are curren
 
 The app is built on Ruby on Rails and uses the Amazon Product Advertising API for book information and images.
 
-The server setup uses looks like: Digital Ocean SSD/Ubuntu 12.04 x64/nginx/PostgreSQL/Unicorn/Capistrano.
+The server setup the app uses looks like: Digital Ocean SSD/Ubuntu 12.04 x64/nginx/PostgreSQL/Unicorn/Capistrano.
 
 * * *
 
